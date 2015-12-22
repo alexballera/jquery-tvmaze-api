@@ -1,22 +1,52 @@
 $(function () {
   /**
+  * Variables Globales
+  */
+  var $tvShowContainer = $('#app-body').find('.tv-shows')
+  /**
+  * Optimizamos con renderShows
+  */
+  function renderShows (shows) {
+    shows.forEach(function (show) {
+      var article = template
+      .replace(':name:', show.name)
+      .replace(':img:', show.image.medium)
+      .replace(':summary:', show.summary)
+      .replace(':img alt:', show.name + ' Image')
+
+      var $article = $(article)
+      $article.hide()
+      $tvShowContainer.append($article.show('slow'))
+    })
+  }
+  /**
   * Submit search form
   */
-
   $('#app-body')
   .find('form')
   .submit(function (event) {
     event.preventDefault()
     var busqueda = $(this)
-    .find('input[type="text"]')
-    .val()
-    console.log('realizada la busqueda: ' + busqueda)
+      .find('input[type="text"]')
+      .val()
+    $tvShowContainer.find('.tv-show').remove()
+    var $loader = $('<div class="loader">')
+    $loader.appendTo($tvShowContainer)
+    $.ajax({
+      url: 'http://api.tvmaze.com/search/shows',
+      data: { q: busqueda },
+      success: function (res, status, xhr) {
+        $loader.remove()
+        var shows = res.map(function (el) {
+          return el.show
+        })
+        renderShows(shows)
+      }
+    })
   })
-
   /**
   * Request
   */
-
   var template = '<article class="tv-show">' +
             '<div class="left img-container">' +
               '<img src=":img:" alt=":img alt:">' +
@@ -26,20 +56,11 @@ $(function () {
               '<p>:summary:</p>' +
             '</div>' +
           '</article>'
-
   $.ajax({
     url: 'http://api.tvmaze.com/shows',
     success: function (shows, status, xhr) {
-      var $tvShowContainer = $('#app-body').find('.tv-shows')
-      shows.forEach(function (show) {
-        var article = template
-        .replace(':name:', show.name)
-        .replace(':img:', show.image.medium)
-        .replace(':summary:', show.summary)
-        .replace(':img alt:', show.name + ' Logo')
-        
-        $tvShowContainer.append($(article))
-      })
+      $tvShowContainer.find('.loader').remove()
+      renderShows(shows)
     }
   })
 })
