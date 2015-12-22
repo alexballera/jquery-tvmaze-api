@@ -1,0 +1,91 @@
+body{
+    font-size: 16px;
+    font-family: Roboto;
+    background-color: #aeaeae;
+    margin: 0;
+    padding: 0;
+}
+#app-container{
+    width: 100%;
+    overflow: hidden;
+
+}
+#app-header{
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+    background-color: #2ecc71;
+    text-align: center;
+}
+
+#app-header h1 {
+    line-height: 10vh;
+    margin: 0;
+    color: white;
+}
+
+#app-body{
+    padding-top: 15vh;
+    width: 80%;
+    margin: 0 auto;
+    min-height: 75vh;
+}
+
+#app-footer{
+    width: 100%;
+    min-height: 10vh;
+}
+
+#app-footer p{
+    margin: 0 auto;
+    width: 40%;
+    text-align: center;
+    padding-top: 3px;
+    border-top: 1px solid #7f8c8d;
+}
+.tv-show{
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem;
+    background-color: white;
+    margin-bottom: 1rem;
+}
+.tv-show:hover{
+    background-color: #ecf0f1;
+}
+
+.tv-show .img-container{
+    width: 20%
+}
+.tv-show img {
+    max-width: 100%;
+}
+.tv-show .info{
+    width: 75%;
+}
+.left{
+    float: left;
+}
+.right {
+    float: right;
+}
+#app-body .search-form {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+#app-body .search-form input[type="text"] {
+    border-radius: 6px;
+    padding: 0 .5em;
+    width: 300px;
+    font-size: 22px;
+    line-height: 40px;
+    height: 100%;
+}
+#app-body .search-form button[type="submit"] {
+    height: 100%;
+    line-height: 40px;
+    font-size: 22px;
+}
