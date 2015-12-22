@@ -27,7 +27,7 @@ body{
 
 #app-body{
     padding-top: 15vh;
-    width: 80%;
+    max-width: 80%;
     margin: 0 auto;
     min-height: 75vh;
 }
@@ -45,6 +45,7 @@ body{
     border-top: 1px solid #7f8c8d;
 }
 .tv-show{
+    box-sizing: border-box;
     width: 100%;
     overflow: hidden;
     padding: 1rem;
@@ -54,7 +55,11 @@ body{
 .tv-show:hover{
     background-color: #ecf0f1;
 }
-
+.tv-show p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .tv-show .img-container{
     width: 20%
 }
@@ -70,8 +75,9 @@ body{
 .right {
     float: right;
 }
+
 #app-body .search-form {
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
     margin-bottom: 20px;
@@ -84,9 +90,11 @@ body{
     font-size: 22px;
     line-height: 40px;
     height: 100%;
+    margin: .25em 0;
 }
 #app-body .search-form button[type="submit"] {
     height: 100%;
     line-height: 40px;
     font-size: 22px;
+    margin: .25em 0;
 }
