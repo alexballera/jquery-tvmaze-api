@@ -1,7 +1,15 @@
 $(function () {
   // Variables Globales
   var $tvShowContainer = $('#app-body').find('.tv-shows')
-
+// Animaciones
+  $tvShowContainer.on('click', 'button.like', function(ev){
+    var $this = $(this)
+    // $this.animate({
+    //   'fontSize': '3em'
+    // }, 'fast')
+  // $this.closest('.tv-show').addClass('liked')
+  $this.closest('.tv-show').toggleClass('liked')
+  })
   // Optimizamos con renderShows
   function renderShows (shows) {
     $tvShowContainer.find('.loader').remove()
@@ -14,7 +22,7 @@ $(function () {
 
       var $article = $(article)
       $article.hide()
-      $tvShowContainer.append($article.show('slow'))
+      $tvShowContainer.append($article.fadeIn(3500))
     })
   }
 
@@ -50,6 +58,7 @@ $(function () {
             '<div class="right info">' +
               '<h1>:name:</h1>' +
               '<p>:summary:</p>' +
+              '<button class="like">♥</button>'
             '</div>' +
           '</article>'
   if (!localStorage.shows) {

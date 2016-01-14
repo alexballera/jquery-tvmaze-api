@@ -51,9 +51,31 @@ body{
     padding: 1rem;
     background-color: white;
     margin-bottom: 1rem;
+    position: relative;
 }
 .tv-show:hover{
     background-color: #ecf0f1;
+}
+.tv-show.liked{
+    background-color: #e08283;
+}
+.tv-show.liked:hover{
+    background-color: #f1a9a0;
+}
+.tv-show button.like{
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2em;
+    cursor: pointer;
+    color: red;
+    transition: all 1s ease;
+}
+.tv-show.liked button.like{
+    font-size: 4em;
 }
 .tv-show p{
     white-space: nowrap;
